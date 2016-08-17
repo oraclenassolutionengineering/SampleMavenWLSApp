@@ -6,12 +6,12 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>basicWebapp</name>
- 
+
   <!-- Start elements of Oracle products and licenses -->
   <description>Oracle WebLogic Maven Archetype</description>
   <url>http://www.oracle.com/us/products/middleware/cloud-app-foundation/weblogic/suite/overview/index.html</url>
   <inceptionYear>1997</inceptionYear>
- 
+
   <organization>
     <name>Oracle America, Inc.</name>
     <url>http://www.oracle.com</url>
@@ -19,8 +19,8 @@
   <licenses>
     <license>
       <name>
-	The "Oracle Technology Network License Agreement - Oracle 
-        Maven Repository" is the license for this Project Object 
+	The "Oracle Technology Network License Agreement - Oracle
+        Maven Repository" is the license for this Project Object
 	Model (POM) file and the associated software and documentation
 	unless you have accepted or agreed to different license terms
 	with Oracle when you obtained the right to use the POM file,
@@ -29,10 +29,10 @@
       </name>
       <url>https://www.oracle.com/webapps/maven/register/license.html</url>
       <distribution>repo</distribution>
-      <comments> 
+      <comments>
 	Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights
 	reserved.
- 
+
 	This Project Object Model (POM) file and the associated software and
 	documentation are provided under a license agreement containing
 	restrictions on use and disclosure and are protected by intellectual
@@ -45,7 +45,7 @@
 	accepting the Oracle Technology Network License Agreement - Oracle
 	Maven Repository terms and conditions set forth at the above-listed
 	URL.
- 
+
 	Except as expressly permitted in your license agreement or allowed
 	by law, you may not:
 
@@ -62,14 +62,14 @@
 	or any other public Maven repository.
 
 	Reverse engineering, disassembly, or decompilation of this software,
-	unless required by law for interoperability, is prohibited.  
- 
+	unless required by law for interoperability, is prohibited.
+
 	Additional Notices
- 
+
 	The information contained herein is subject to change without notice
 	and is not warranted to be error-free. If you find any errors, please
 	report them to us in writing.
- 
+
 	If this is software or related documentation that is delivered to the
 	U.S. Government or anyone licensing it on behalf of the
 	U.S. Government, the following notice is applicable:
@@ -102,7 +102,7 @@
     </license>
   </licenses>
   <!-- End elements of Oracle products and licenses -->
-  
+
   <parent>
     <groupId>com.oracle.weblogic.archetype</groupId>
     <artifactId>wls-common</artifactId>
@@ -137,41 +137,43 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.oracle.weblogic</groupId> 
-        <artifactId>weblogic-maven-plugin</artifactId> 
-        <version>12.2.1-0-0</version> 
+        <groupId>com.oracle.weblogic</groupId>
+        <artifactId>weblogic-maven-plugin</artifactId>
+        <version>12.2.1-0-0</version>
         <!--
         You can find and redefine the following variables in the parent pom file arccording to your environment.
-  
+
         oracleMiddlewareHome
         oracleServerUrl
         oracleUsername
         oraclePassword
         oracleServerName
         -->
-        <configuration> 
+        <configuration>
           <middlewareHome>${oracleMiddlewareHome}</middlewareHome>
-        </configuration> 
+        </configuration>
         <executions>
           <!--Deploy the application to the server-->
           <execution>
-            <phase>pre-integration-test</phase> 
-            <goals> 
-              <goal>deploy</goal> 
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>deploy</goal>
             </goals>
-            <configuration> 
+            <configuration>
               <!--The admin URL where the app is deployed. Here use the plugin's default value t3://localhost:7001-->
-              <!--adminurl>${oracleServerUrl}</adminurl-->
-              <user>${oracleUsername}</user> 
-              <password>${oraclePassword}</password>
-              <!--The location of the file or directory to be deployed-->
-              <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
-              <!--The target servers where the application is deployed. Here use the plugin's default value AdminServer-->
-              <!--targets>${oracleServerName}</targets-->
-              <verbose>true</verbose> 
-              <name>${project.build.finalName}</name>
-            </configuration> 
-          </execution> 
+             <adminurl>${oracleServerUrl}</adminurl>
+             <user>${oracleUsername}</user>
+             <password>${oraclePassword}</password>
+             <!--The location of the file or directory to be deployed-->
+             <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+             <!--The target servers where the application is deployed. Here use the plugin's default value AdminServer-->
+             <targets>${oracleServerName}</targets>
+             <verbose>true</verbose>
+             <remote>true</remote>
+             <upload>true</upload>
+             <name>${project.build.finalName}</name>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
